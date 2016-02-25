@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
         Ember.Object.create({
         title: '',
         description: '',
-        checklist: []
+        checklist: Ember.A([])
       }));
     }
   }

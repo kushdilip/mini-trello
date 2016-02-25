@@ -5,18 +5,14 @@ export default Ember.Controller.extend({
   content: Ember.computed.alias('controllers.application.content'),
   
   actions: {
-    clearDone(card, cardIndex) {
+    clearDone(card) {
       let checklist = card.checklist || [];
-      let clength = checklist.length;
       
-      for(let i = 0; i < clength; i++){
-        if (checklist[i].done) {
-          checklist.splice(i, 1);
+      checklist.forEach((item, index, array) => {
+        if (Ember.get(item, 'done')) {
+          array.removeObject(item);          
         }
-      }
-      
-      let content = this.get('content');
-      content[cardIndex] = card;
+      });
     },
     
     deleteCard(/*card*/) {

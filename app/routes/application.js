@@ -6,7 +6,7 @@ export default Ember.Route.extend({
       Ember.Object.create({
         title: 'First card', 
         description: 'This is the most important thing to do today',
-        checklist: [
+        checklist: Ember.A([
           Ember.Object.create({
             done: false,
             text: 'first item'
@@ -15,7 +15,7 @@ export default Ember.Route.extend({
             done: false,
             text: 'second item'
           })
-        ]
+        ])
       })
     ];
   },
