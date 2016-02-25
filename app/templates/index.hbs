@@ -1,0 +1,36 @@
+<div class="mdl-grid">
+  {{#each content as |card index|}}
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--6-col">
+      
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{card.title}}</h2>
+      </div>
+      
+      {{!-- Main content --}}
+      <div class="mdl-card__supporting-text">
+        <p>{{card.description}}</p>
+        <ul class="list-unstyled">
+          {{#each card.checklist as |item|}}
+            <li>
+              {{mdl-checkbox value=item.done}}
+              <span style={{if item.done 'text-decoration:line-through;'}}>
+                {{item.text}}
+              </span>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      
+      {{!-- Actions --}}
+      <div class="mdl-card__actions mdl-card--border">
+        {{mdl-button text='Add checklist item'}}
+        {{mdl-button text='Clear done' action=(action 'clearDone' card index)}}
+      </div>
+        
+      {{!-- Menu --}}
+      <div class="mdl-card__menu">
+        {{mdl-button icon='edit'}}
+      </div>
+    </div>
+  {{/each}}  
+</div>
