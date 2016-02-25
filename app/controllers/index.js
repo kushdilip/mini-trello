@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  needs: ['application'],
+  content: Ember.computed.alias('controllers.application.content'),
+  
   actions: {
     clearDone(card, cardIndex) {
       let checklist = card.checklist || [];
@@ -14,7 +17,10 @@ export default Ember.Controller.extend({
       
       let content = this.get('content');
       content[cardIndex] = card;
-    }
+    },
     
+    deleteCard(/*card*/) {
+      
+    }
   }
 });

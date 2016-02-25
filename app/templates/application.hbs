@@ -9,8 +9,19 @@
 {{/mdl-card}}
 </div> --}}
 <div id="wrap" class="mdl-layout__container">
-<h4>My Mini Trello</h4>
+  <div class="mdl-card mdl-cell mdl-cell--12-col" style="height:100%">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">
+        My Mini Trello
+      </h2>
+    </div>
 
-{{outlet}}
-
+    <div class="mdl-card__supporting-text">
+      {{outlet}}
+    </div>
+    
+    <div class="mdl-card__menu">
+      {{mdl-button isFloating=true isMiniFab=true icon='add' action=(action "addCard")}}
+    </div>
+  </div>
 </div>
