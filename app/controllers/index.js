@@ -5,8 +5,16 @@ export default Ember.Controller.extend({
   content: Ember.computed.alias('controllers.application.content'),
   
   actions: {
+    addChecklistItem(card){
+      let checklist = card.checklist || Ember.A([]);
+      checklist.pushObject(Ember.Object.create({
+        done: false,
+        text: ''
+      }));
+    },
+    
     clearDone(card) {
-      let checklist = card.checklist || [];
+      let checklist = card.checklist || Ember.A([]);
       
       checklist.forEach((item, index, array) => {
         if (Ember.get(item, 'done')) {
@@ -15,8 +23,9 @@ export default Ember.Controller.extend({
       });
     },
     
-    deleteCard(/*card*/) {
-      
+    deleteCard(card) {
+      let content = this.get('content');
+      content.removeObject(card);
     }
   }
 });

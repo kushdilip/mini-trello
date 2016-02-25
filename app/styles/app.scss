@@ -1,4 +1,6 @@
 @import 'material-design-lite';
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
 
 body {
   background-color: #f5f5f5;
@@ -18,4 +20,25 @@ body {
 
 .inline-block {
   display: inline-block;
+}
+
+.modal-container {
+  background: white;
+  position: fixed;
+  right: 20%;
+  top: 50px;
+  width: 400px;
+  left: 20%;
+  border-radius: 0 !important;
+  max-height: 600px;
+  overflow-y: scroll;
+}
+
+.mdl-card__actions {
+  position: absolute;
+  bottom: 0;
+}
+
+.mdl-card__supporting-text {
+  margin-bottom: 50px;
 }

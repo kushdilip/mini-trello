@@ -21,7 +21,23 @@
     </div>
     
     <div class="mdl-card__menu">
-      {{mdl-button isFloating=true isMiniFab=true icon='add' action=(action "addCard")}}
+      {{mdl-button isFloating=true isMiniFab=true icon='add' action=(action "togglePopup")}}
     </div>
   </div>
+  
+
 </div>
+
+{{#if isShowPopup}}
+  {{#modal-dialog 
+    container-class='modal-container'
+  }}
+    <h4>Add Card</h4>
+    {{mdl-textfield label='Title' value=newCard.title pattern="^[a-zA-Z0-9\s]*$" errorMessage="Please enter some text"}}
+    {{mdl-textarea label='Description' value=newCard.description }}
+    
+    <hr>
+    {{mdl-button isRaised=true text='Save' action=(action 'togglePopup' newCard) disabled=isSaveDisabled}}
+    {{mdl-button isRaised=true text='Cancel' action=(action 'togglePopup')}}
+  {{/modal-dialog}}
+{{/if}}

@@ -11,6 +11,7 @@
       {{!-- Main content --}}
       <div class="mdl-card__supporting-text">
         <p>{{edit-item model=card property="description"}}</p>
+        <hr>
         <ul class="list-unstyled">
           {{#each card.checklist as |item|}}
             <li>
@@ -23,14 +24,18 @@
       
       {{!-- Actions --}}
       <div class="mdl-card__actions mdl-card--border">
-        {{mdl-button text='Add checklist item'}}
-        {{mdl-button text='Clear done' action=(action 'clearDone' card index)}}
+        {{mdl-button text='Add checklist item' action=(action 'addChecklistItem' card)}}
+        {{mdl-button text='Clear done' action=(action 'clearDone' card)}}
       </div>
         
       {{!-- Menu --}}
       <div class="mdl-card__menu">
         {{mdl-button icon='delete' action=(action "deleteCard" card)}}
       </div>
+    </div>
+  {{else}}
+    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp" style="text-align: center">
+      <h4>Please click on plus icon above to add cards.</h4>
     </div>
   {{/each}}  
 </div>
